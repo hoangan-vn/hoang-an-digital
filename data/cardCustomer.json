@@ -1,0 +1,150 @@
+{
+  "cards": [
+    {
+      "id": "card_001",
+      "ownerUserId": "u_001",
+      "title": { "vi": "Gia đình nhà trai", "en": "Groom's family" },
+      "slug": { "vi": "gia-dinh-nha-trai", "en": "grooms-family" },
+      "event": {
+        "name": { "vi": "Lễ Thành Hôn", "en": "Wedding ceremony" },
+        "date": "2026-05-15",
+        "time": "18:00",
+        "locationName": { "vi": "Nhà hàng Ánh Dương - Sảnh A", "en": "Anh Duong Restaurant - Hall A" },
+        "address": "12 Nguyễn Huệ, Q.1, TP.HCM",
+        "mapUrl": "https://maps.google.com/?q=12+Nguyen+Hue+Q1+HCMC"
+      },
+      "stickyBar": {
+        "facebook": "https://facebook.com/hoangan.digital",
+        "zalo": "https://zalo.me/",
+        "phone": "+84 912 345 678"
+      },
+      "stats": {
+        "guestCount": 6,
+        "attendingCount": 4,
+        "declinedCount": 1,
+        "pendingCount": 1
+      },
+      "createdAt": "2026-02-18T10:00:00.000Z"
+    },
+    {
+      "id": "card_002",
+      "ownerUserId": "u_001",
+      "title": { "vi": "Bạn bè", "en": "Friends" },
+      "slug": { "vi": "ban-be", "en": "friends" },
+      "event": {
+        "name": { "vi": "Lễ Thành Hôn", "en": "Wedding ceremony" },
+        "date": "2026-05-15",
+        "time": "18:00",
+        "locationName": { "vi": "Nhà hàng Ánh Dương - Sảnh A", "en": "Anh Duong Restaurant - Hall A" },
+        "address": "12 Nguyễn Huệ, Q.1, TP.HCM",
+        "mapUrl": "https://maps.google.com/?q=12+Nguyen+Hue+Q1+HCMC"
+      },
+      "stickyBar": {
+        "facebook": "https://facebook.com/hoangan.digital",
+        "zalo": "https://zalo.me/",
+        "phone": "+84 912 345 678"
+      },
+      "stats": {
+        "guestCount": 7,
+        "attendingCount": 3,
+        "declinedCount": 0,
+        "pendingCount": 4
+      },
+      "createdAt": "2026-02-18T10:05:00.000Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cus_001",
+      "cardId": "card_001",
+      "fullName": "Ông Nguyễn Văn C",
+      "phone": "+84 901 111 222",
+      "email": null,
+      "relationship": "Chú",
+      "invitedBy": "Nhà trai",
+      "status": "attending",
+      "notes": "Ăn chay",
+      "tags": ["gia đình"],
+      "createdAt": "2026-02-18T10:10:00.000Z"
+    },
+    {
+      "id": "cus_002",
+      "cardId": "card_001",
+      "fullName": "Bà Trần Thị D",
+      "phone": "+84 902 333 444",
+      "email": null,
+      "relationship": "Cô",
+      "invitedBy": "Nhà trai",
+      "status": "attending",
+      "notes": "",
+      "tags": ["gia đình"],
+      "createdAt": "2026-02-18T10:11:00.000Z"
+    },
+    {
+      "id": "cus_003",
+      "cardId": "card_001",
+      "fullName": "Anh Nguyễn Văn E",
+      "phone": "+84 903 555 666",
+      "email": "e.nguyen@example.com",
+      "relationship": "Anh họ",
+      "invitedBy": "Nhà trai",
+      "status": "declined",
+      "notes": "Bận công tác",
+      "tags": ["gia đình"],
+      "createdAt": "2026-02-18T10:12:00.000Z"
+    },
+    {
+      "id": "cus_004",
+      "cardId": "card_001",
+      "fullName": "Chị Lê Thị F",
+      "phone": "+84 904 777 888",
+      "email": "f.le@example.com",
+      "relationship": "Bạn của mẹ",
+      "invitedBy": "Nhà trai",
+      "status": "pending",
+      "notes": "",
+      "tags": ["gia đình"],
+      "createdAt": "2026-02-18T10:13:00.000Z"
+    },
+    {
+      "id": "cus_005",
+      "cardId": "card_002",
+      "fullName": "Bạn: Phạm Minh G",
+      "phone": "+84 905 888 999",
+      "email": "g.pham@example.com",
+      "relationship": "Bạn thân",
+      "invitedBy": "Nguyễn Văn A",
+      "status": "attending",
+      "notes": "",
+      "tags": ["bạn bè"],
+      "createdAt": "2026-02-18T10:20:00.000Z"
+    },
+    {
+      "id": "cus_006",
+      "cardId": "card_002",
+      "fullName": "Bạn: Võ Hồng H",
+      "phone": "+84 906 121 314",
+      "email": null,
+      "relationship": "Bạn đại học",
+      "invitedBy": "Nguyễn Văn A",
+      "status": "pending",
+      "notes": "",
+      "tags": ["bạn bè"],
+      "createdAt": "2026-02-18T10:21:00.000Z"
+    },
+    {
+      "id": "cus_007",
+      "cardId": "card_002",
+      "fullName": "Bạn: Đặng Khánh I",
+      "phone": "+84 907 222 333",
+      "email": null,
+      "relationship": "Bạn đồng nghiệp",
+      "invitedBy": "Nguyễn Văn A",
+      "status": "pending",
+      "notes": "",
+      "tags": ["bạn bè"],
+      "createdAt": "2026-02-18T10:22:00.000Z"
+    }
+  ]
+}
+

@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": "u_001",
+      "fullName": "Nguyễn Văn A",
+      "email": "nguyenvana@example.com",
+      "phone": "+84 912 345 678",
+      "loginProvider": "google",
+      "role": "customer",
+      "referralCode": "CINEA123",
+      "referredByCode": null,
+      "introducedBy": null,
+      "avatarUrl": "/images/users/u-001.webp",
+      "stats": {
+        "ownedProductCount": 3,
+        "totalInteractions": 128,
+        "totalInvitedGuests": 85,
+        "successfulReferrals": 4
+      },
+      "createdAt": "2026-01-10T10:00:00.000Z"
+    },
+    {
+      "id": "u_002",
+      "fullName": "Trần Thị B",
+      "email": "tranthib@example.com",
+      "phone": "+84 913 222 333",
+      "loginProvider": "zalo",
+      "role": "customer",
+      "referralCode": "CINEB456",
+      "referredByCode": "CINEA123",
+      "introducedBy": "Nguyễn Văn A",
+      "avatarUrl": "/images/users/u-002.webp",
+      "stats": {
+        "ownedProductCount": 1,
+        "totalInteractions": 45,
+        "totalInvitedGuests": 32,
+        "successfulReferrals": 1
+      },
+      "createdAt": "2026-01-15T14:30:00.000Z"
+    },
+    {
+      "id": "u_003",
+      "fullName": "CineLove Partner Admin",
+      "email": "partner@cinelove.me",
+      "phone": "+84 909 999 888",
+      "loginProvider": "email",
+      "role": "partner",
+      "referralCode": "PARTNER001",
+      "referredByCode": null,
+      "introducedBy": null,
+      "avatarUrl": "/images/users/partner-admin.webp",
+      "stats": {
+        "ownedProductCount": 12,
+        "totalInteractions": 980,
+        "totalInvitedGuests": 560,
+        "successfulReferrals": 0
+      },
+      "createdAt": "2025-12-20T09:00:00.000Z"
+    },
+    {
+      "id": "u_004",
+      "fullName": "CTV - Lê Cộng Tác",
+      "email": "ctv.le@example.com",
+      "phone": "+84 936 111 222",
+      "loginProvider": "google",
+      "role": "collaborator",
+      "referralCode": "CTV001",
+      "referredByCode": null,
+      "introducedBy": null,
+      "avatarUrl": "/images/users/ctv-001.webp",
+      "commission": {
+        "commissionRate": 0.1,
+        "totalCommissionAmount": 3500000,
+        "totalSuccessfulReferrals": 26
+      },
+      "stats": {
+        "ownedProductCount": 0,
+        "totalInteractions": 0,
+        "totalInvitedGuests": 0,
+        "successfulReferrals": 26
+      },
+      "createdAt": "2026-01-05T08:00:00.000Z"
+    }
+  ]
+}
+

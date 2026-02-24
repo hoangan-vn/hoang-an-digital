@@ -1,0 +1,114 @@
+{
+    "legalPages": [
+        {
+            "id": "privacy-policy",
+            "slug": "privacy-policy",
+            "label": {
+                "en": "Privacy Policy",
+                "vi": "Chính sách bảo mật"
+            },
+            "seo": {
+                "title": {
+                    "en": "Privacy Policy | Hoang An Digital",
+                    "vi": "Chính sách bảo mật | Hoàng An Digital"
+                },
+                "description": {
+                    "en": "Learn how we collect, use and protect your personal information.",
+                    "vi": "Tìm hiểu cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn."
+                }
+            },
+            "content": {
+                "en": "",
+                "vi": ""
+            }
+        },
+        {
+            "id": "terms-conditions",
+            "slug": "terms-and-conditions",
+            "label": {
+                "en": "Terms & Conditions",
+                "vi": "Điều khoản & Điều kiện"
+            },
+            "seo": {
+                "title": {
+                    "en": "Terms & Conditions | Hoang An Digital",
+                    "vi": "Điều khoản & Điều kiện | Hoàng An Digital"
+                },
+                "description": {
+                    "en": "Terms governing the use of our website and services.",
+                    "vi": "Điều khoản quy định việc sử dụng website và dịch vụ của chúng tôi."
+                }
+            },
+            "content": {
+                "en": "",
+                "vi": ""
+            }
+        },
+        {
+            "id": "payment-policy",
+            "slug": "payment-policy",
+            "label": {
+                "en": "Payment Policy",
+                "vi": "Chính sách thanh toán"
+            },
+            "seo": {
+                "title": {
+                    "en": "Payment Policy | Hoang An Digital",
+                    "vi": "Chính sách thanh toán | Hoàng An Digital"
+                },
+                "description": {
+                    "en": "Payment methods and transaction policies.",
+                    "vi": "Phương thức thanh toán và quy định giao dịch."
+                }
+            },
+            "content": {
+                "en": "",
+                "vi": ""
+            }
+        },
+        {
+            "id": "refund-policy",
+            "slug": "refund-policy",
+            "label": {
+                "en": "Refund Policy",
+                "vi": "Chính sách hoàn tiền"
+            },
+            "seo": {
+                "title": {
+                    "en": "Refund Policy | Hoang An Digital",
+                    "vi": "Chính sách hoàn tiền | Hoàng An Digital"
+                },
+                "description": {
+                    "en": "Refund conditions and procedures.",
+                    "vi": "Điều kiện và quy trình hoàn tiền."
+                }
+            },
+            "content": {
+                "en": "",
+                "vi": ""
+            }
+        },
+        {
+            "id": "shipping-policy",
+            "slug": "shipping-policy",
+            "label": {
+                "en": "Shipping Policy",
+                "vi": "Chính sách vận chuyển"
+            },
+            "seo": {
+                "title": {
+                    "en": "Shipping Policy | Hoang An Digital",
+                    "vi": "Chính sách vận chuyển | Hoàng An Digital"
+                },
+                "description": {
+                    "en": "Shipping methods, timelines and fees.",
+                    "vi": "Phương thức, thời gian và chi phí vận chuyển."
+                }
+            },
+            "content": {
+                "en": "",
+                "vi": ""
+            }
+        }
+    ]
+}

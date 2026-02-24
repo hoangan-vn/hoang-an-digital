@@ -1,0 +1,94 @@
+{
+  "partners": [
+    {
+      "id": "par_001",
+      "name": { "vi": "Nhà hàng Ánh Dương", "en": "Anh Duong Restaurant" },
+      "slug": { "vi": "nha-hang-anh-duong", "en": "anh-duong-restaurant" },
+      "type": "nha-hang",
+      "typeLabel": { "vi": "Nhà hàng", "en": "Restaurant" },
+      "phone": "+84 908 111 222",
+      "email": "contact@anhduong-venue.vn",
+      "shortDescription": {
+        "vi": "Sảnh tiệc trung tâm Q.1, phù hợp tiệc cưới ấm cúng đến quy mô lớn.",
+        "en": "A District 1 venue for intimate to large weddings."
+      },
+      "address": {
+        "full": "12 Nguyễn Huệ, Q.1, TP.HCM",
+        "province": "TP.HCM",
+        "district": "Quận 1",
+        "ward": "",
+        "geo": {
+          "lat": 10.773,
+          "lng": 106.704
+        }
+      },
+      "logoUrl": "/images/partners/par-001-logo.webp",
+      "coverImages": [
+        "/images/partners/par-001-1.webp",
+        "/images/partners/par-001-2.webp"
+      ],
+      "isActive": true,
+      "seoMetaId": "seo_par_001",
+      "createdAt": "2026-01-02T09:00:00.000Z"
+    },
+    {
+      "id": "par_002",
+      "name": { "vi": "Studio Lumi Wedding", "en": "Lumi Wedding Studio" },
+      "slug": { "vi": "studio-lumi-wedding", "en": "lumi-wedding-studio" },
+      "type": "studio",
+      "typeLabel": { "vi": "Studio", "en": "Studio" },
+      "phone": "+84 907 333 444",
+      "email": "hello@lumiwedding.vn",
+      "shortDescription": {
+        "vi": "Chụp pre-wedding, quay phim, và thiết kế thiệp online.",
+        "en": "Pre-wedding photography, videography, and online invitation design."
+      },
+      "address": {
+        "full": "88 Trần Hưng Đạo, Q.5, TP.HCM",
+        "province": "TP.HCM",
+        "district": "Quận 5",
+        "ward": "",
+        "geo": {
+          "lat": 10.755,
+          "lng": 106.667
+        }
+      },
+      "logoUrl": "/images/partners/par-002-logo.webp",
+      "coverImages": [
+        "/images/partners/par-002-1.webp"
+      ],
+      "isActive": true,
+      "seoMetaId": "seo_par_002",
+      "createdAt": "2026-01-04T09:00:00.000Z"
+    },
+    {
+      "id": "par_003",
+      "name": { "vi": "Makeup By Hana", "en": "Makeup By Hana" },
+      "slug": { "vi": "makeup-by-hana", "en": "makeup-by-hana" },
+      "type": "shop",
+      "typeLabel": { "vi": "Shop", "en": "Shop" },
+      "phone": "+84 934 555 666",
+      "email": "hana.makeup@example.com",
+      "shortDescription": {
+        "vi": "Makeup cô dâu tone Hàn, hỗ trợ lịch thử và đặt lịch nhanh.",
+        "en": "Korean-style bridal makeup with trials and fast booking."
+      },
+      "address": {
+        "full": "25 Lê Văn Sỹ, Q.Phú Nhuận, TP.HCM",
+        "province": "TP.HCM",
+        "district": "Phú Nhuận",
+        "ward": "",
+        "geo": {
+          "lat": 10.794,
+          "lng": 106.679
+        }
+      },
+      "logoUrl": "/images/partners/par-003-logo.webp",
+      "coverImages": [],
+      "isActive": true,
+      "seoMetaId": "seo_par_003",
+      "createdAt": "2026-01-05T09:00:00.000Z"
+    }
+  ]
+}
+

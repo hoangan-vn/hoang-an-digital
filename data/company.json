@@ -1,0 +1,74 @@
+{
+    "en": {
+        "companyName": {
+            "key": "Company Name",
+            "value": "Hoang An Digital Co., Ltd"
+        },
+        "introduce": {
+            "key": "",
+            "value": "",
+            "link": ""
+        },
+        "address": {
+            "key": "Address",
+            "value": ""
+        },
+        "taxCode": {
+            "key": "Tax Identification Number",
+            "value": ""
+        },
+        "phone": {
+            "key": "Phone",
+            "value": ""
+        }
+    },
+    "vi": {
+        "companyName": {
+            "key": "Công ty TNHH Hoàng An Digital",
+            "value": ""
+        },
+        "introduce": {
+            "key": "",
+            "value": "",
+            "link": ""
+        },
+        "address": {
+            "key": "Địa chỉ",
+            "value": ""
+        },
+        "taxCode": {
+            "key": "MST",
+            "value": ""
+        },
+        "phone": {
+            "key": "Điện thoại",
+            "value": ""
+        }
+    },
+    "social": {
+        "facebook": {
+            "key": "Facebook",
+            "value": "https://facebook.com/hoangan.digital"
+        },
+        "zalo": {
+            "key": "Zalo",
+            "value": "https://zalo.me/"
+        },
+        "instagram": {
+            "key": "Instagram",
+            "value": "https://instagram.com/hoangan.digital"
+        },
+        "tiktok": {
+            "key": "TikTok",
+            "value": "https://tiktok.com/@hoangan.digital"
+        },
+        "youtube": {
+            "key": "YouTube",
+            "value": "https://youtube.com/@hoangandigital"
+        },
+        "email": {
+            "key": "Email",
+            "value": "contact@hoangandigital.com"
+        }
+    }
+}

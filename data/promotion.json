@@ -1,0 +1,46 @@
+{
+  "promotions": [
+    {
+      "id": "promo_venue_500k",
+      "name": { "vi": "Giảm 500.000đ khi đặt sảnh", "en": "Save 500,000 VND on hall booking" },
+      "slug": { "vi": "giam-500k-khi-dat-sanh", "en": "save-500k-hall-booking" },
+      "type": "promotion",
+      "value": {
+        "unit": "vnd",
+        "amount": 500000
+      },
+      "isActive": true,
+      "validFrom": "2026-02-01T00:00:00.000Z",
+      "validTo": "2026-03-15T23:59:59.000Z",
+      "appliesTo": {
+        "productIds": ["prd_venue_001"],
+        "partnerIds": [],
+        "categoryIds": ["cat_venue"]
+      },
+      "seoMetaId": "seo_promo_venue_500k",
+      "createdAt": "2026-01-25T10:00:00.000Z"
+    },
+    {
+      "id": "promo_invite_20p",
+      "name": { "vi": "Giảm 20% gói thiệp online", "en": "20% off online invitations" },
+      "slug": { "vi": "giam-20-thiep-online", "en": "20-off-online-invitations" },
+      "type": "promotion",
+      "value": {
+        "unit": "percent",
+        "amount": 20,
+        "maxDiscount": 150000
+      },
+      "isActive": true,
+      "validFrom": "2026-02-10T00:00:00.000Z",
+      "validTo": "2026-04-30T23:59:59.000Z",
+      "appliesTo": {
+        "productIds": ["prd_invite_001", "prd_invite_002"],
+        "partnerIds": [],
+        "categoryIds": ["cat_invitation"]
+      },
+      "seoMetaId": "seo_promo_invite_20p",
+      "createdAt": "2026-02-05T10:00:00.000Z"
+    }
+  ]
+}
+

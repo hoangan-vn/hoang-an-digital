@@ -1,0 +1,398 @@
+{
+  "seoMetas": [
+    {
+      "id": "seo_cat_venue",
+      "entityType": "category",
+      "entityId": "cat_venue",
+      "title": { "vi": "Nhà hàng - Tiệc cưới | CineLove", "en": "Wedding venues | CineLove" },
+      "description": {
+        "vi": "Khám phá nhà hàng, sảnh tiệc cưới uy tín. So sánh gói dịch vụ, khuyến mãi và đánh giá.",
+        "en": "Explore trusted wedding venues. Compare packages, promotions, and reviews."
+      },
+      "keywords": {
+        "vi": ["nhà hàng tiệc cưới", "sảnh tiệc", "đặt tiệc", "wedding venue"],
+        "en": ["wedding venue", "wedding banquet", "wedding hall"]
+      },
+      "ogImageUrl": "/images/seo/categories/wedding-venues.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_cat_makeup",
+      "entityType": "category",
+      "entityId": "cat_makeup",
+      "title": { "vi": "Trang điểm | CineLove", "en": "Makeup services | CineLove" },
+      "description": {
+        "vi": "Dịch vụ makeup cô dâu, makeup dự tiệc. Xem bảng giá, đặt lịch và ưu đãi.",
+        "en": "Bridal and event makeup services. See pricing, book appointments, and promotions."
+      },
+      "keywords": {
+        "vi": ["makeup cô dâu", "trang điểm", "artist makeup"],
+        "en": ["bridal makeup", "makeup artist", "wedding makeup"]
+      },
+      "ogImageUrl": "/images/seo/categories/makeup.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_cat_photo",
+      "entityType": "category",
+      "entityId": "cat_photo",
+      "title": { "vi": "Chụp ảnh - Quay phim | CineLove", "en": "Photo & video | CineLove" },
+      "description": {
+        "vi": "Gói chụp ảnh, quay phim cưới, pre-wedding. Tham khảo mẫu và ưu đãi.",
+        "en": "Wedding photo/video & pre-wedding packages. Browse samples and deals."
+      },
+      "keywords": {
+        "vi": ["chụp ảnh cưới", "quay phim cưới", "pre-wedding"],
+        "en": ["wedding photography", "wedding videography", "pre-wedding"]
+      },
+      "ogImageUrl": "/images/seo/categories/photo-video.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_cat_invitation",
+      "entityType": "category",
+      "entityId": "cat_invitation",
+      "title": { "vi": "Thiệp online | CineLove", "en": "Online invitations | CineLove" },
+      "description": {
+        "vi": "Mẫu thiệp online hiện đại: RSVP, bản đồ, thư viện ảnh, nhúng video YouTube.",
+        "en": "Modern online invitations: RSVP, maps, photo gallery, optional YouTube embed."
+      },
+      "keywords": {
+        "vi": ["thiệp online", "thiệp cưới online", "RSVP", "bản đồ"],
+        "en": ["online invitation", "wedding invitation", "RSVP"]
+      },
+      "ogImageUrl": "/images/seo/categories/online-invitations.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_cat_gift",
+      "entityType": "category",
+      "entityId": "cat_gift",
+      "title": { "vi": "Quà tặng - Phụ kiện | CineLove", "en": "Gifts & accessories | CineLove" },
+      "description": {
+        "vi": "Quà tặng, phụ kiện cưới và gợi ý set quà phù hợp ngân sách.",
+        "en": "Wedding gifts, accessories, and curated sets for every budget."
+      },
+      "keywords": {
+        "vi": ["quà cưới", "phụ kiện cưới", "quà tặng"],
+        "en": ["wedding gifts", "wedding accessories"]
+      },
+      "ogImageUrl": "/images/seo/categories/gifts-accessories.webp",
+      "robots": "index,follow"
+    },
+
+    {
+      "id": "seo_par_001",
+      "entityType": "partner",
+      "entityId": "par_001",
+      "title": { "vi": "Nhà hàng Ánh Dương | Đối tác CineLove", "en": "Anh Duong Restaurant | CineLove partner" },
+      "description": {
+        "vi": "Nhà hàng tổ chức tiệc cưới tại Q.1, TP.HCM. Xem gói sảnh tiệc và ưu đãi mới nhất.",
+        "en": "Wedding venue partner in District 1, HCMC. Browse packages and latest deals."
+      },
+      "keywords": {
+        "vi": ["nhà hàng ánh dương", "tiệc cưới quận 1", "sảnh tiệc"],
+        "en": ["wedding venue", "District 1", "wedding hall"]
+      },
+      "ogImageUrl": "/images/partners/par-001-1.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_par_002",
+      "entityType": "partner",
+      "entityId": "par_002",
+      "title": { "vi": "Studio Lumi Wedding | Đối tác CineLove", "en": "Lumi Wedding Studio | CineLove partner" },
+      "description": {
+        "vi": "Studio chụp pre-wedding và thiệp online. Xem portfolio và gói dịch vụ nổi bật.",
+        "en": "Pre-wedding studio and online invitations. Explore portfolio and top packages."
+      },
+      "keywords": {
+        "vi": ["studio lumi", "chụp pre-wedding", "thiệp online"],
+        "en": ["pre-wedding", "wedding studio", "online invitations"]
+      },
+      "ogImageUrl": "/images/partners/par-002-1.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_par_003",
+      "entityType": "partner",
+      "entityId": "par_003",
+      "title": { "vi": "Makeup By Hana | Đối tác CineLove", "en": "Makeup By Hana | CineLove partner" },
+      "description": {
+        "vi": "Dịch vụ makeup cô dâu tone Hàn, hỗ trợ lịch thử makeup và đặt lịch nhanh.",
+        "en": "Korean-style bridal makeup with trial scheduling and fast booking."
+      },
+      "keywords": {
+        "vi": ["makeup hana", "makeup cô dâu", "tone hàn"],
+        "en": ["bridal makeup", "Korean makeup", "makeup artist"]
+      },
+      "ogImageUrl": "/images/partners/par-003-logo.webp",
+      "robots": "index,follow"
+    },
+
+    {
+      "id": "seo_prd_venue_001",
+      "entityType": "product",
+      "entityId": "prd_venue_001",
+      "title": { "vi": "Gói Sảnh Tiệc 200 khách | CineLove", "en": "Wedding hall package (200 guests) | CineLove" },
+      "description": {
+        "vi": "Gói sảnh tiệc 200 khách: thực đơn 6 món, trang trí cơ bản, MC, âm thanh ánh sáng.",
+        "en": "200-guest wedding hall package: 6-course menu, basic decoration, MC, sound & lights."
+      },
+      "keywords": {
+        "vi": ["gói sảnh tiệc", "tiệc cưới 200 khách", "đặt sảnh"],
+        "en": ["wedding hall package", "200 guests", "banquet"]
+      },
+      "ogImageUrl": "/images/products/prd-venue-001-1.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_prd_photo_001",
+      "entityType": "product",
+      "entityId": "prd_photo_001",
+      "title": { "vi": "Gói Chụp Pre-wedding Ngoại Cảnh | CineLove", "en": "Outdoor pre-wedding photo package | CineLove" },
+      "description": {
+        "vi": "Chụp 2 concept, 1 ngày, 25 ảnh retouch + album 20x30.",
+        "en": "2 concepts in 1 day, 25 retouched photos + 20x30 album."
+      },
+      "keywords": {
+        "vi": ["chụp pre-wedding", "chụp ngoại cảnh", "album cưới"],
+        "en": ["pre-wedding", "outdoor photoshoot", "wedding album"]
+      },
+      "ogImageUrl": "/images/products/prd-photo-001-1.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_prd_makeup_001",
+      "entityType": "product",
+      "entityId": "prd_makeup_001",
+      "title": { "vi": "Makeup Cô Dâu - Tone Hàn | CineLove", "en": "Bridal makeup (Korean style) | CineLove" },
+      "description": {
+        "vi": "Makeup + làm tóc, kèm phụ kiện cơ bản, hỗ trợ chỉnh sửa đến khi hài lòng.",
+        "en": "Makeup + hairstyle with basic accessories and refinement until satisfied."
+      },
+      "keywords": {
+        "vi": ["makeup cô dâu", "tone hàn", "làm tóc cô dâu"],
+        "en": ["bridal makeup", "Korean style", "wedding hairstyle"]
+      },
+      "ogImageUrl": "/images/products/prd-makeup-001-1.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_prd_invite_001",
+      "entityType": "product",
+      "entityId": "prd_invite_001",
+      "title": { "vi": "Thiệp Online Minimal (M01) | CineLove", "en": "Minimal online invitation (M01) | CineLove" },
+      "description": {
+        "vi": "Thiệp online tối giản: RSVP, bản đồ, thư viện ảnh, nút gọi/Zalo.",
+        "en": "Minimal online invitation with RSVP, maps, gallery, and call/Zalo buttons."
+      },
+      "keywords": {
+        "vi": ["thiệp online minimal", "RSVP", "thiệp cưới online"],
+        "en": ["minimal invitation", "online RSVP", "wedding invitation"]
+      },
+      "ogImageUrl": "/images/products/prd-invite-001-1.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_prd_invite_002",
+      "entityType": "product",
+      "entityId": "prd_invite_002",
+      "title": { "vi": "Thiệp Online Luxury (L02) | CineLove", "en": "Luxury online invitation (L02) | CineLove" },
+      "description": {
+        "vi": "Thiệp online phong cách luxury, hiệu ứng slide ảnh, nhúng video YouTube (tuỳ chọn).",
+        "en": "Luxury online invitation with photo slideshow and optional YouTube embed."
+      },
+      "keywords": {
+        "vi": ["thiệp online luxury", "slide ảnh", "nhúng video youtube"],
+        "en": ["luxury invitation", "photo slideshow", "YouTube embed"]
+      },
+      "ogImageUrl": "/images/products/prd-invite-002-1.webp",
+      "robots": "index,follow"
+    },
+
+    {
+      "id": "seo_promo_venue_500k",
+      "entityType": "promotion",
+      "entityId": "promo_venue_500k",
+      "title": { "vi": "Giảm 500.000đ khi đặt sảnh | CineLove", "en": "Save 500,000 VND on hall booking | CineLove" },
+      "description": {
+        "vi": "Khuyến mãi giảm thẳng 500.000đ khi đặt sảnh. Thời gian áp dụng có giới hạn.",
+        "en": "Instant 500,000 VND discount on hall booking. Limited-time offer."
+      },
+      "keywords": {
+        "vi": ["khuyến mãi đặt sảnh", "giảm 500k", "tiệc cưới"],
+        "en": ["wedding promotion", "hall discount", "save 500k"]
+      },
+      "ogImageUrl": "/images/seo/promotions/promo-venue-500k.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_promo_invite_20p",
+      "entityType": "promotion",
+      "entityId": "promo_invite_20p",
+      "title": { "vi": "Giảm 20% thiệp online | CineLove", "en": "20% off online invitations | CineLove" },
+      "description": {
+        "vi": "Giảm 20% gói thiệp online cho các mẫu được áp dụng. Xem điều kiện và thời hạn.",
+        "en": "Get 20% off selected online invitations. Check eligibility and validity."
+      },
+      "keywords": {
+        "vi": ["giảm 20%", "thiệp online", "khuyến mãi"],
+        "en": ["20% off", "online invitation", "promotion"]
+      },
+      "ogImageUrl": "/images/seo/promotions/promo-invite-20.webp",
+      "robots": "index,follow"
+    },
+
+    {
+      "id": "seo_coupon_10p_min2m",
+      "entityType": "voucher",
+      "entityId": "coupon_10p_min2m",
+      "title": { "vi": "Voucher 10% đơn từ 2.000.000đ | CineLove", "en": "10% voucher for orders from 2,000,000 VND | CineLove" },
+      "description": {
+        "vi": "Voucher giảm 10% (tối đa 300.000đ) cho đơn từ 2.000.000đ.",
+        "en": "10% voucher (up to 300,000 VND) for orders from 2,000,000 VND."
+      },
+      "keywords": {
+        "vi": ["voucher 10%", "mã giảm giá", "đơn từ 2 triệu"],
+        "en": ["10% voucher", "discount code", "minimum spend"]
+      },
+      "ogImageUrl": "/images/seo/vouchers/cine10.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_coupon_200k_min1m",
+      "entityType": "voucher",
+      "entityId": "coupon_200k_min1m",
+      "title": { "vi": "Giảm 200.000đ đơn từ 1.000.000đ | CineLove", "en": "200,000 VND off orders from 1,000,000 VND | CineLove" },
+      "description": {
+        "vi": "Voucher giảm 200.000đ cho đơn từ 1.000.000đ. Số lượng có hạn.",
+        "en": "200,000 VND voucher for orders from 1,000,000 VND. Limited quantity."
+      },
+      "keywords": {
+        "vi": ["voucher 200k", "mã giảm giá", "đơn từ 1 triệu"],
+        "en": ["200k voucher", "discount code", "minimum spend"]
+      },
+      "ogImageUrl": "/images/seo/vouchers/cine200.webp",
+      "robots": "index,follow"
+    },
+
+    {
+      "id": "seo_blog_001",
+      "entityType": "blog",
+      "entityId": "blog_001",
+      "title": {
+        "vi": "Thiệp online là gì? | CineLove Blog",
+        "en": "What is an online invitation? | CineLove Blog"
+      },
+      "description": {
+        "vi": "Tổng quan thiệp online, lợi ích và mẹo chọn mẫu phù hợp cho đám cưới hiện đại.",
+        "en": "A guide to online invitations: benefits and tips for modern weddings."
+      },
+      "keywords": {
+        "vi": ["thiệp online", "RSVP", "thiệp cưới"],
+        "en": ["online invitation", "RSVP", "wedding invitation"]
+      },
+      "ogImageUrl": "/images/blogs/blog-001-thumb.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_blog_002",
+      "entityType": "blog",
+      "entityId": "blog_002",
+      "title": { "vi": "Top 10 nhà hàng tiệc cưới TP.HCM | CineLove Blog", "en": "Top 10 wedding venues in HCMC | CineLove Blog" },
+      "description": {
+        "vi": "Gợi ý tiêu chí chọn sảnh tiệc và danh sách địa điểm đáng cân nhắc tại TP.HCM.",
+        "en": "How to choose a venue and a curated list of places in Ho Chi Minh City."
+      },
+      "keywords": {
+        "vi": ["nhà hàng tiệc cưới", "TP.HCM", "chọn sảnh"],
+        "en": ["wedding venues", "HCMC", "venue checklist"]
+      },
+      "ogImageUrl": "/images/blogs/blog-002-thumb.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_blog_003",
+      "entityType": "blog",
+      "entityId": "blog_003",
+      "title": { "vi": "Feedback: CardCustomer giúp quản lý khách mời | CineLove Blog", "en": "Feedback: CardCustomer guest tracking | CineLove Blog" },
+      "description": {
+        "vi": "Case thực tế phân nhóm khách mời theo card để theo dõi RSVP rõ ràng.",
+        "en": "A real case of grouping guests into cards for clearer RSVP tracking."
+      },
+      "keywords": {
+        "vi": ["CardCustomer", "khách mời", "RSVP"],
+        "en": ["CardCustomer", "guest list", "RSVP"]
+      },
+      "ogImageUrl": "/images/blogs/blog-003-thumb.webp",
+      "robots": "index,follow"
+    },
+
+    {
+      "id": "seo_news_001",
+      "entityType": "news",
+      "entityId": "news_001",
+      "title": { "vi": "Giảm 20% thiệp online trong tháng | CineLove", "en": "20% off online invitations this month | CineLove" },
+      "description": {
+        "vi": "Thông báo chương trình giảm 20% cho các mẫu thiệp online được áp dụng.",
+        "en": "Announcement: 20% discount for selected online invitations."
+      },
+      "keywords": {
+        "vi": ["khuyến mãi", "thiệp online", "giảm 20%"],
+        "en": ["promotion", "online invitations", "20% off"]
+      },
+      "ogImageUrl": "/images/seo/news/news-001.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_news_002",
+      "entityType": "news",
+      "entityId": "news_002",
+      "title": { "vi": "Cập nhật chính sách hoàn tiền | CineLove", "en": "Refund policy update | CineLove" },
+      "description": {
+        "vi": "Thông báo cập nhật chính sách hoàn tiền & đổi dịch vụ.",
+        "en": "Announcement: refund policy and service exchange updates."
+      },
+      "keywords": {
+        "vi": ["chính sách", "hoàn tiền", "đổi dịch vụ"],
+        "en": ["policy", "refund", "terms"]
+      },
+      "ogImageUrl": "/images/seo/news/news-002.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_news_003",
+      "entityType": "news",
+      "entityId": "news_003",
+      "title": { "vi": "Bộ sưu tập thiệp mới | CineLove", "en": "New invitation collection | CineLove" },
+      "description": {
+        "vi": "Thông báo ra mắt bộ sưu tập thiệp online mới: Minimal và Luxury.",
+        "en": "Announcement: new online invitation collection — Minimal & Luxury."
+      },
+      "keywords": {
+        "vi": ["thiệp online", "bộ sưu tập mới", "Minimal", "Luxury"],
+        "en": ["online invitations", "new collection", "Minimal", "Luxury"]
+      },
+      "ogImageUrl": "/images/seo/news/news-003.webp",
+      "robots": "index,follow"
+    },
+    {
+      "id": "seo_news_004",
+      "entityType": "news",
+      "entityId": "news_004",
+      "title": { "vi": "Đối tác mới: Makeup By Hana | CineLove", "en": "New partner: Makeup By Hana | CineLove" },
+      "description": {
+        "vi": "Chào mừng đối tác trang điểm mới tham gia hệ sinh thái CineLove.",
+        "en": "Welcome a new makeup partner joining the CineLove ecosystem."
+      },
+      "keywords": {
+        "vi": ["đối tác mới", "makeup", "Hana"],
+        "en": ["new partner", "makeup", "Hana"]
+      },
+      "ogImageUrl": "/images/seo/news/news-004.webp",
+      "robots": "index,follow"
+    }
+  ]
+}
+

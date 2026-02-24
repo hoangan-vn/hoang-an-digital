@@ -1,0 +1,89 @@
+{
+  "blogs": [
+    {
+      "id": "blog_001",
+      "title": {
+        "vi": "Thiệp online là gì? Lợi ích & cách dùng cho đám cưới hiện đại",
+        "en": "What is an online invitation? Benefits and how to use it"
+      },
+      "slug": {
+        "vi": "thiep-online-la-gi-loi-ich-cach-dung",
+        "en": "what-is-an-online-invitation-benefits-how-to"
+      },
+      "category": "thiệp-online",
+      "tags": ["thiệp online", "đám cưới", "RSVP"],
+      "thumbnailUrl": "/images/blogs/blog-001-thumb.webp",
+      "excerpt": {
+        "vi": "Thiệp online giúp tiết kiệm chi phí, dễ quản lý khách mời, và tạo trải nghiệm hiện đại cho buổi lễ.",
+        "en": "Online invitations save cost, simplify guest management, and create a modern experience."
+      },
+      "contentMarkdown": {
+        "vi": "## Thiệp online là gì?\n\nThiệp online là một trang thiệp số có thể chia sẻ qua Zalo/Facebook/Email...\n\n## Lợi ích\n- Quản lý RSVP\n- Bản đồ chỉ đường\n- Thư viện ảnh và video\n\n## Lời khuyên\nChọn mẫu phù hợp phong cách và kiểm tra hiển thị trên mobile.",
+        "en": "## What is an online invitation?\n\nAn online invitation is a digital invitation page that can be shared via Zalo/Facebook/Email...\n\n## Benefits\n- RSVP management\n- Maps & directions\n- Photo gallery and video\n\n## Tips\nPick a template that matches your style and test it on mobile."
+      },
+      "author": {
+        "name": "CineLove Editorial",
+        "partnerId": null
+      },
+      "isFeatured": true,
+      "seoMetaId": "seo_blog_001",
+      "publishedAt": "2026-02-02T08:00:00.000Z",
+      "createdAt": "2026-02-01T08:00:00.000Z"
+    },
+    {
+      "id": "blog_002",
+      "title": { "vi": "Top 10 nhà hàng tiệc cưới đáng cân nhắc tại TP.HCM", "en": "Top 10 wedding venues to consider in Ho Chi Minh City" },
+      "slug": { "vi": "top-10-nha-hang-tiec-cuoi-tphcm", "en": "top-10-wedding-venues-hcmc" },
+      "category": "cưới",
+      "tags": ["nhà hàng", "tiệc cưới", "tư vấn"],
+      "thumbnailUrl": "/images/blogs/blog-002-thumb.webp",
+      "excerpt": {
+        "vi": "Danh sách gợi ý kèm tiêu chí chọn sảnh: vị trí, thực đơn, sức chứa, chi phí phát sinh.",
+        "en": "A curated list plus a checklist: location, menu, capacity, and hidden costs."
+      },
+      "contentMarkdown": {
+        "vi": "## Tiêu chí chọn nhà hàng\n\n1. Vị trí thuận tiện\n2. Thực đơn phù hợp\n3. Chi phí minh bạch\n\n## Gợi ý\n- Nhà hàng Ánh Dương (Q.1)\n- ...\n",
+        "en": "## Venue checklist\n\n1. Convenient location\n2. Suitable menu\n3. Transparent pricing\n\n## Suggestions\n- Anh Duong Restaurant (District 1)\n- ...\n"
+      },
+      "author": {
+        "name": "CineLove Editorial",
+        "partnerId": null
+      },
+      "isFeatured": false,
+      "seoMetaId": "seo_blog_002",
+      "publishedAt": "2026-02-12T08:00:00.000Z",
+      "createdAt": "2026-02-10T08:00:00.000Z"
+    },
+    {
+      "id": "blog_003",
+      "title": {
+        "vi": "Feedback khách hàng: Tối ưu danh sách khách mời với CardCustomer",
+        "en": "Customer feedback: Optimizing guest lists with CardCustomer"
+      },
+      "slug": {
+        "vi": "feedback-toi-uu-khach-moi-voi-cardcustomer",
+        "en": "feedback-optimizing-guest-lists-with-cardcustomer"
+      },
+      "category": "feedback",
+      "tags": ["feedback", "khách mời", "RSVP"],
+      "thumbnailUrl": "/images/blogs/blog-003-thumb.webp",
+      "excerpt": {
+        "vi": "Một case thực tế dùng card khách mời theo nhóm để dễ theo dõi xác nhận tham dự.",
+        "en": "A real case of grouping guests into cards to track RSVPs more easily."
+      },
+      "contentMarkdown": {
+        "vi": "## Vấn đề\n\nKhách mời đông, khó phân nhóm và theo dõi.\n\n## Giải pháp\n\nTạo nhiều card (gia đình, bạn bè, đồng nghiệp) và lưu từng khách mời theo từng card.\n\n## Kết quả\n\nGiảm nhầm lẫn, tăng tỉ lệ phản hồi.",
+        "en": "## The problem\n\nLarge guest list, hard to group and track.\n\n## The solution\n\nCreate multiple cards (family, friends, colleagues) and store guests per card.\n\n## Result\n\nLess confusion and higher response rate."
+      },
+      "author": {
+        "name": "CineLove Editorial",
+        "partnerId": null
+      },
+      "isFeatured": true,
+      "seoMetaId": "seo_blog_003",
+      "publishedAt": "2026-02-20T08:00:00.000Z",
+      "createdAt": "2026-02-18T08:00:00.000Z"
+    }
+  ]
+}
+

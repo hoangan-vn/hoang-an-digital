@@ -1,0 +1,52 @@
+{
+  "vouchers": [
+    {
+      "id": "coupon_10p_min2m",
+      "name": { "vi": "Voucher 10% - Đơn từ 2.000.000đ", "en": "10% voucher - Orders from 2,000,000 VND" },
+      "slug": { "vi": "voucher-10-don-tu-2000000", "en": "10-percent-voucher-min-2000000" },
+      "type": "coupon",
+      "value": {
+        "unit": "percent",
+        "amount": 10,
+        "maxDiscount": 300000
+      },
+      "conditions": {
+        "minOrderValue": 2000000,
+        "applicableCategoryIds": ["cat_venue", "cat_photo", "cat_makeup"],
+        "applicablePartnerIds": []
+      },
+      "isActive": true,
+      "validFrom": "2026-02-01T00:00:00.000Z",
+      "validTo": "2026-03-31T23:59:59.000Z",
+      "code": "CINE10",
+      "usageLimit": 500,
+      "usedCount": 23,
+      "seoMetaId": "seo_coupon_10p_min2m",
+      "createdAt": "2026-01-20T09:00:00.000Z"
+    },
+    {
+      "id": "coupon_200k_min1m",
+      "name": { "vi": "Giảm 200.000đ - Đơn từ 1.000.000đ", "en": "200,000 VND off - Orders from 1,000,000 VND" },
+      "slug": { "vi": "giam-200k-don-tu-1000000", "en": "200k-off-min-1000000" },
+      "type": "coupon",
+      "value": {
+        "unit": "vnd",
+        "amount": 200000
+      },
+      "conditions": {
+        "minOrderValue": 1000000,
+        "applicableCategoryIds": [],
+        "applicablePartnerIds": []
+      },
+      "isActive": true,
+      "validFrom": "2026-02-10T00:00:00.000Z",
+      "validTo": "2026-04-10T23:59:59.000Z",
+      "code": "CINE200",
+      "usageLimit": 300,
+      "usedCount": 12,
+      "seoMetaId": "seo_coupon_200k_min1m",
+      "createdAt": "2026-02-01T09:00:00.000Z"
+    }
+  ]
+}
+

@@ -1,0 +1,74 @@
+{
+  "news": [
+    {
+      "id": "news_001",
+      "type": "promotion",
+      "title": { "vi": "Giảm 20% gói thiệp online trong tháng này", "en": "20% off online invitations this month" },
+      "slug": { "vi": "giam-20-goi-thiep-online", "en": "20-off-online-invitations-this-month" },
+      "excerpt": {
+        "vi": "Áp dụng cho các mẫu thiệp online, số lượng có hạn.",
+        "en": "Applies to selected online invitation templates. Limited availability."
+      },
+      "related": {
+        "promotionId": "promo_invite_20p",
+        "productIds": ["prd_invite_001", "prd_invite_002"],
+        "partnerIds": []
+      },
+      "seoMetaId": "seo_news_001",
+      "publishedAt": "2026-02-10T07:00:00.000Z",
+      "createdAt": "2026-02-09T07:00:00.000Z"
+    },
+    {
+      "id": "news_002",
+      "type": "policy",
+      "title": { "vi": "Cập nhật chính sách hoàn tiền & đổi dịch vụ", "en": "Refund policy & service exchange update" },
+      "slug": { "vi": "cap-nhat-chinh-sach-hoan-tien-doi-dich-vu", "en": "refund-policy-service-exchange-update" },
+      "excerpt": {
+        "vi": "Làm rõ điều kiện hoàn tiền, thời gian xử lý và kênh hỗ trợ.",
+        "en": "Clarifies refund eligibility, processing time, and support channels."
+      },
+      "related": {
+        "legalPageId": "refund-policy"
+      },
+      "seoMetaId": "seo_news_002",
+      "publishedAt": "2026-02-15T07:00:00.000Z",
+      "createdAt": "2026-02-14T07:00:00.000Z"
+    },
+    {
+      "id": "news_003",
+      "type": "product",
+      "title": {
+        "vi": "Bộ sưu tập thiệp online mới: Minimal M01 & Luxury L02",
+        "en": "New online invitation collection: Minimal M01 & Luxury L02"
+      },
+      "slug": { "vi": "bo-suu-tap-thiep-moi-minimal-luxury", "en": "new-invitation-collection-minimal-luxury" },
+      "excerpt": {
+        "vi": "Thêm 2 mẫu thiệp mới, tối ưu mobile, hỗ trợ RSVP và bản đồ.",
+        "en": "Two new templates optimized for mobile with RSVP and maps."
+      },
+      "related": {
+        "productIds": ["prd_invite_001", "prd_invite_002"]
+      },
+      "seoMetaId": "seo_news_003",
+      "publishedAt": "2026-02-05T07:00:00.000Z",
+      "createdAt": "2026-02-04T07:00:00.000Z"
+    },
+    {
+      "id": "news_004",
+      "type": "partner",
+      "title": { "vi": "Chào mừng đối tác mới: Makeup By Hana", "en": "New partner: Makeup By Hana" },
+      "slug": { "vi": "chao-mung-doi-tac-moi-makeup-by-hana", "en": "new-partner-makeup-by-hana" },
+      "excerpt": {
+        "vi": "Thêm lựa chọn trang điểm tone Hàn, hỗ trợ lịch thử makeup.",
+        "en": "New Korean-style makeup option with trial scheduling support."
+      },
+      "related": {
+        "partnerIds": ["par_003"]
+      },
+      "seoMetaId": "seo_news_004",
+      "publishedAt": "2026-01-18T07:00:00.000Z",
+      "createdAt": "2026-01-17T07:00:00.000Z"
+    }
+  ]
+}
+

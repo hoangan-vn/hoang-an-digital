@@ -1,0 +1,171 @@
+{
+  "products": [
+    {
+      "id": "prd_venue_001",
+      "name": { "vi": "Gói Sảnh Tiệc - 200 khách", "en": "Wedding hall package - 200 guests" },
+      "slug": { "vi": "goi-sanh-tiec-200-khach", "en": "wedding-hall-package-200-guests" },
+      "type": "service",
+      "typeLabel": { "vi": "Dịch vụ", "en": "Service" },
+      "price": 65000000,
+      "currency": "VND",
+      "categoryId": "cat_venue",
+      "partnerId": "par_001",
+      "promotionApplied": true,
+      "promotionIds": ["promo_venue_500k"],
+      "thumbnailUrl": "/images/products/prd-venue-001-thumb.webp",
+      "description": {
+        "vi": "Sảnh tiệc sang trọng, thực đơn 6 món, trang trí cơ bản, MC, âm thanh ánh sáng.",
+        "en": "Elegant hall, 6-course menu, basic decoration, MC, sound and lighting."
+      },
+      "images": [
+        "/images/products/prd-venue-001-1.webp",
+        "/images/products/prd-venue-001-2.webp",
+        "/images/products/prd-venue-001-3.webp"
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "isActive": true,
+      "seoMetaId": "seo_prd_venue_001",
+      "stats": {
+        "viewCount": 892,
+        "likeCount": 63,
+        "addToCartCount": 41,
+        "orderCount": 9
+      },
+      "createdByUserId": "u_003",
+      "createdAt": "2026-01-10T09:00:00.000Z"
+    },
+    {
+      "id": "prd_photo_001",
+      "name": { "vi": "Gói Chụp Pre-wedding Ngoại Cảnh", "en": "Outdoor pre-wedding photo package" },
+      "slug": { "vi": "goi-chup-pre-wedding-ngoai-canh", "en": "outdoor-pre-wedding-photo-package" },
+      "type": "service",
+      "typeLabel": { "vi": "Dịch vụ", "en": "Service" },
+      "price": 8900000,
+      "currency": "VND",
+      "categoryId": "cat_photo",
+      "partnerId": "par_002",
+      "promotionApplied": false,
+      "promotionIds": [],
+      "thumbnailUrl": "/images/products/prd-photo-001-thumb.webp",
+      "description": {
+        "vi": "Chụp 2 concept, 1 ngày, makeup cơ bản, 25 ảnh retouch + album 20x30.",
+        "en": "2 concepts in 1 day, basic makeup, 25 retouched photos + 20x30 album."
+      },
+      "images": [
+        "/images/products/prd-photo-001-1.webp",
+        "/images/products/prd-photo-001-2.webp"
+      ],
+      "youtubeUrl": null,
+      "isActive": true,
+      "seoMetaId": "seo_prd_photo_001",
+      "stats": {
+        "viewCount": 510,
+        "likeCount": 39,
+        "addToCartCount": 22,
+        "orderCount": 6
+      },
+      "createdByUserId": "u_003",
+      "createdAt": "2026-01-12T09:00:00.000Z"
+    },
+    {
+      "id": "prd_makeup_001",
+      "name": { "vi": "Makeup Cô Dâu - Tone Hàn", "en": "Bridal makeup - Korean style" },
+      "slug": { "vi": "makeup-co-dau-tone-han", "en": "bridal-makeup-korean-style" },
+      "type": "service",
+      "typeLabel": { "vi": "Dịch vụ", "en": "Service" },
+      "price": 2500000,
+      "currency": "VND",
+      "categoryId": "cat_makeup",
+      "partnerId": "par_003",
+      "promotionApplied": false,
+      "promotionIds": [],
+      "thumbnailUrl": "/images/products/prd-makeup-001-thumb.webp",
+      "description": {
+        "vi": "Makeup + làm tóc, kèm phụ kiện cơ bản, hỗ trợ chỉnh sửa đến khi hài lòng.",
+        "en": "Makeup + hairstyle with basic accessories, refinements until satisfied."
+      },
+      "images": [
+        "/images/products/prd-makeup-001-1.webp"
+      ],
+      "youtubeUrl": null,
+      "isActive": true,
+      "seoMetaId": "seo_prd_makeup_001",
+      "stats": {
+        "viewCount": 220,
+        "likeCount": 18,
+        "addToCartCount": 9,
+        "orderCount": 3
+      },
+      "createdByUserId": "u_003",
+      "createdAt": "2026-01-18T09:00:00.000Z"
+    },
+    {
+      "id": "prd_invite_001",
+      "name": { "vi": "Thiệp Online - Minimal (Mẫu M01)", "en": "Online Invitation - Minimal (Template M01)" },
+      "slug": { "vi": "thiep-online-minimal-m01", "en": "online-invitation-minimal-m01" },
+      "type": "digital",
+      "typeLabel": { "vi": "Số", "en": "Digital" },
+      "price": 199000,
+      "currency": "VND",
+      "categoryId": "cat_invitation",
+      "partnerId": "par_002",
+      "promotionApplied": true,
+      "promotionIds": ["promo_invite_20p"],
+      "thumbnailUrl": "/images/products/prd-invite-001-thumb.webp",
+      "description": {
+        "vi": "Thiệp online tối giản, hỗ trợ RSVP, bản đồ, thư viện ảnh, nút gọi/Zalo.",
+        "en": "Minimal online invitation with RSVP, maps, photo gallery, and call/Zalo buttons."
+      },
+      "images": [
+        "/images/products/prd-invite-001-1.webp",
+        "/images/products/prd-invite-001-2.webp",
+        "/images/products/prd-invite-001-3.webp"
+      ],
+      "youtubeUrl": null,
+      "isActive": true,
+      "seoMetaId": "seo_prd_invite_001",
+      "stats": {
+        "viewCount": 1400,
+        "likeCount": 120,
+        "addToCartCount": 88,
+        "orderCount": 40
+      },
+      "createdByUserId": "u_001",
+      "createdAt": "2026-02-01T09:00:00.000Z"
+    },
+    {
+      "id": "prd_invite_002",
+      "name": { "vi": "Thiệp Online - Luxury (Mẫu L02)", "en": "Online Invitation - Luxury (Template L02)" },
+      "slug": { "vi": "thiep-online-luxury-l02", "en": "online-invitation-luxury-l02" },
+      "type": "digital",
+      "typeLabel": { "vi": "Số", "en": "Digital" },
+      "price": 399000,
+      "currency": "VND",
+      "categoryId": "cat_invitation",
+      "partnerId": "par_002",
+      "promotionApplied": true,
+      "promotionIds": ["promo_invite_20p"],
+      "thumbnailUrl": "/images/products/prd-invite-002-thumb.webp",
+      "description": {
+        "vi": "Thiệp online phong cách luxury, hiệu ứng slide ảnh, nhúng video YouTube (tuỳ chọn).",
+        "en": "Luxury online invitation with photo slideshow and optional YouTube embed."
+      },
+      "images": [
+        "/images/products/prd-invite-002-1.webp",
+        "/images/products/prd-invite-002-2.webp"
+      ],
+      "youtubeUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+      "isActive": true,
+      "seoMetaId": "seo_prd_invite_002",
+      "stats": {
+        "viewCount": 760,
+        "likeCount": 67,
+        "addToCartCount": 31,
+        "orderCount": 14
+      },
+      "createdByUserId": "u_001",
+      "createdAt": "2026-02-05T09:00:00.000Z"
+    }
+  ]
+}
+

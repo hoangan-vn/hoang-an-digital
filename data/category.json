@@ -1,0 +1,40 @@
+{
+  "categories": [
+    {
+      "id": "cat_venue",
+      "name": { "vi": "Nhà hàng - Tiệc cưới", "en": "Wedding venues" },
+      "slug": { "vi": "nha-hang-tiec-cuoi", "en": "wedding-venues" },
+      "seoMetaId": "seo_cat_venue",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "cat_makeup",
+      "name": { "vi": "Trang điểm", "en": "Makeup" },
+      "slug": { "vi": "trang-diem", "en": "makeup" },
+      "seoMetaId": "seo_cat_makeup",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "cat_photo",
+      "name": { "vi": "Chụp ảnh - Quay phim", "en": "Photography & videography" },
+      "slug": { "vi": "chup-anh-quay-phim", "en": "photo-video" },
+      "seoMetaId": "seo_cat_photo",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "cat_invitation",
+      "name": { "vi": "Thiệp online", "en": "Online invitations" },
+      "slug": { "vi": "thiep-online", "en": "online-invitations" },
+      "seoMetaId": "seo_cat_invitation",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "cat_gift",
+      "name": { "vi": "Quà tặng - Phụ kiện", "en": "Gifts & accessories" },
+      "slug": { "vi": "qua-tang-phu-kien", "en": "gifts-accessories" },
+      "seoMetaId": "seo_cat_gift",
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    }
+  ]
+}
+
