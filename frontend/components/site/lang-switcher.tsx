@@ -21,7 +21,7 @@ export function LangSwitcher() {
   }, []);
 
   return (
-    <div className="inline-flex items-center rounded-full border border-white/15 bg-white/5 p-1 text-xs text-white/80">
+    <div className="inline-flex items-center rounded-full border border-border bg-muted/50 p-1 text-xs text-foreground/80">
       {(["vi", "en"] as const).map((l) => (
         <button
           key={l}
@@ -33,7 +33,7 @@ export function LangSwitcher() {
           }}
           className={[
             "rounded-full px-3 py-1 transition",
-            lang === l ? "bg-white/15 text-white" : "hover:bg-white/10",
+            lang === l ? "bg-primary text-primary-foreground" : "hover:bg-muted",
           ].join(" ")}
         >
           {l.toUpperCase()}

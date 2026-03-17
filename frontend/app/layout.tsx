@@ -20,10 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="dark">
+    <html lang="vi" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-dvh bg-[#0f0f0f] text-white antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-dvh antialiased bg-background text-foreground`}
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.classList.add('dark');else if(t!=='light')localStorage.setItem('theme','light');})();`,
+          }}
+        />
         <SiteHeader />
         <main className="mx-auto w-full max-w-screen-xl px-4 pt-20">
           {children}
