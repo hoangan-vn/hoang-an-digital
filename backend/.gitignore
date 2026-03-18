@@ -31,16 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-# Environment Variables
-.env
-.env.local
-.env.production
-application.properties
-application-local.properties
-application-prod.properties
-
-# Sensitive Configuration Files
-firebase-service-account.json
-firebase-service-account-local.json
-firebase-service-account-prod.json
