@@ -10,14 +10,26 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class getPageSource {
 
@@ -29,9 +41,12 @@ public class getPageSource {
       driver = createFirefoxDriver();
       JavascriptExecutor js = (JavascriptExecutor) driver;
       driver.get(URL);
-      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
       wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-      Thread.sleep(2000);
+      waitForDocumentReady(driver);
+      scrollPageToLoadLazyContent(js);
+      Thread.sleep(1500);
+      waitForDocumentReady(driver);
       String htmlSource = driver.getPageSource();
 
       // Tạo thư mục result nếu chưa tồn tại
@@ -80,16 +95,32 @@ public class getPageSource {
         }
       }
 
-      saveToFile("External_Styles.css", allExternalCSS.toString());
+      String externalCssMerged = allExternalCSS.toString();
+      saveToFile("External_Styles.css", externalCssMerged);
       System.out.println("✓ Đã tải thành công " + successCount + "/" +
           linkElements.size() + " external CSS files");
+
+      File assetsDir = new File("./result/assets");
+      assetsDir.mkdirs();
+      Map<String, String> urlToLocal = new LinkedHashMap<>();
+      String pageBase = driver.getCurrentUrl();
+      mergeCssUrlsIntoDownloadQueue(externalCssMerged, pageBase, urlToLocal);
+      collectAssetUrlsFromDom(js, urlToLocal);
+      int savedAssets = downloadAssets(urlToLocal, assetsDir);
+      System.out.println("✓ Đã tải " + savedAssets + " file ảnh/font/media (vào result/assets/)");
+
+      externalCssMerged = rewriteUrlsInText(externalCssMerged, urlToLocal);
+      saveToFile("External_Styles_local.css", externalCssMerged);
+
+      htmlSource = rewriteUrlsInText(htmlSource, urlToLocal);
 
       String computedStyles = extractComputedStyles(driver, js);
       saveToFile("Computed_Styles.css", computedStyles);
       System.out.println("✓ Đã lưu computed styles");
 
-      String completeHTML = createCompleteHTML(htmlSource, inlineCSS.toString(),
-          allExternalCSS.toString());
+      String inlineForEmbed = rewriteUrlsInText(inlineCSS.toString(), urlToLocal);
+      String completeHTML = createCompleteHTML(htmlSource, inlineForEmbed,
+          externalCssMerged);
       saveToFile("Complete_Page.html", completeHTML);
       System.out.println("✓ Đã tạo file HTML hoàn chỉnh với tất cả CSS");
 
@@ -136,8 +167,8 @@ public class getPageSource {
       System.out.println("Không tìm thấy binary Firefox, thử dùng PATH mặc định...");
     }
 
-    // Các preferences tối ưu cho scraping
-    options.addPreference("permissions.default.image", 2);       // Không tải ảnh (tùy chọn, tắt nếu cần)
+    // Bật tải ảnh để DOM và clone offline có đủ media (trước đây =2 là chặn ảnh → thiếu nội dung).
+    options.addPreference("permissions.default.image", 1);
     options.addPreference("dom.webnotifications.enabled", false); // Tắt thông báo
     options.addPreference("media.volume_scale", "0.0");           // Tắt âm thanh
 
@@ -196,7 +227,7 @@ public class getPageSource {
     String script =
         "let styles = '';" +
             "document.querySelectorAll('*').forEach((el, index) => {" +
-            "  if (index < 50) {" + // Giới hạn 50 elements đầu tiên
+            "  if (index < 300) {" + // Giới hạn để file không quá lớn; tăng nếu cần
             "    try {" +
             "      let computed = window.getComputedStyle(el);" +
             "      let selector = el.tagName.toLowerCase();" +
@@ -256,5 +287,248 @@ public class getPageSource {
     PrintWriter printWriter = new PrintWriter(fileWriter);
     printWriter.print(content);
     printWriter.close();
+  }
+
+  private void waitForDocumentReady(WebDriver driver) {
+    new WebDriverWait(driver, Duration.ofSeconds(30)).until(
+        d -> "complete".equals(
+            ((JavascriptExecutor) d).executeScript("return document.readyState"))
+    );
+  }
+
+  /**
+   * Cuộn từng đoạn để lazy-load ảnh / nội dung (Next.js, v.v.).
+   */
+  private void scrollPageToLoadLazyContent(JavascriptExecutor js) {
+    Object h = js.executeScript(
+        "return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);"
+    );
+    long height = h instanceof Number ? ((Number) h).longValue() : 0L;
+    int step = Math.max(400, (int) Math.min(height / 10, 900));
+    for (long y = 0; y <= height; y += step) {
+      js.executeScript("window.scrollTo(0, arguments[0]);", y);
+      try {
+        Thread.sleep(120);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        break;
+      }
+    }
+    js.executeScript("window.scrollTo(0, 0);");
+  }
+
+  private static final Pattern CSS_URL_PATTERN = Pattern.compile(
+      "url\\(\\s*([\"']?)([^\"')\\s]+)\\1\\s*\\)",
+      Pattern.CASE_INSENSITIVE | Pattern.DOTALL
+  );
+
+  private void mergeCssUrlsIntoDownloadQueue(
+      String css, String pageBase, Map<String, String> urlToLocal) {
+    if (css == null || css.isEmpty()) {
+      return;
+    }
+    Matcher m = CSS_URL_PATTERN.matcher(css);
+    while (m.find()) {
+      String raw = m.group(2).trim();
+      if (raw.isEmpty() || raw.startsWith("data:") || raw.startsWith("#")) {
+        continue;
+      }
+      String abs = toAbsoluteAssetUrl(raw, pageBase);
+      if (abs != null) {
+        urlToLocal.putIfAbsent(abs, null);
+      }
+    }
+  }
+
+  private String toAbsoluteAssetUrl(String raw, String pageBase) {
+    try {
+      if (raw.startsWith("//")) {
+        URI base = URI.create(pageBase);
+        String scheme = base.getScheme() != null ? base.getScheme() : "https";
+        return URI.create(scheme + ":" + raw).normalize().toString();
+      }
+      if (raw.startsWith("http://") || raw.startsWith("https://")) {
+        return raw;
+      }
+      return URI.create(pageBase).resolve(raw).normalize().toString();
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private void collectAssetUrlsFromDom(JavascriptExecutor js, Map<String, String> urlToLocal) {
+    String script =
+        "var out = [];"
+            + "function add(u) {"
+            + "  if (!u || u.indexOf('data:') === 0 || u.indexOf('blob:') === 0) return;"
+            + "  try { out.push(new URL(u, document.baseURI).href); } catch (e) {}"
+            + "}"
+            + "document.querySelectorAll('img[src]').forEach(function(el) { add(el.getAttribute('src')); });"
+            + "document.querySelectorAll('img[srcset]').forEach(function(el) {"
+            + "  (el.getAttribute('srcset') || '').split(',').forEach(function(part) {"
+            + "    var u = part.trim().split(/\\s+/)[0];"
+            + "    add(u);"
+            + "  });"
+            + "});"
+            + "document.querySelectorAll('source[srcset], source[src]').forEach(function(el) {"
+            + "  if (el.getAttribute('src')) add(el.getAttribute('src'));"
+            + "  (el.getAttribute('srcset') || '').split(',').forEach(function(part) {"
+            + "    var u = part.trim().split(/\\s+/)[0];"
+            + "    add(u);"
+            + "  });"
+            + "});"
+            + "document.querySelectorAll('video[poster]').forEach(function(el) {"
+            + "  add(el.getAttribute('poster'));"
+            + "});"
+            + "document.querySelectorAll("
+            + "  'link[rel~=\"icon\"][href], link[rel=\"preload\"][href], "
+            + "link[rel=\"apple-touch-icon\"][href]'"
+            + ").forEach(function(el) { add(el.getAttribute('href')); });"
+            + "return out;";
+    Object raw = js.executeScript(script);
+    if (!(raw instanceof List)) {
+      return;
+    }
+    for (Object o : (List<Object>) raw) {
+      if (o == null) {
+        continue;
+      }
+      String u = o.toString();
+      if (u.startsWith("http://") || u.startsWith("https://")) {
+        urlToLocal.putIfAbsent(u, null);
+      }
+    }
+  }
+
+  private int downloadAssets(Map<String, String> urlToLocal, File assetsDir) {
+    int saved = 0;
+    List<String> keys = new ArrayList<>(urlToLocal.keySet());
+    for (String url : keys) {
+      if (urlToLocal.get(url) != null) {
+        continue;
+      }
+      String local = downloadBinaryToAssetsFile(url, assetsDir);
+      if (local != null) {
+        urlToLocal.put(url, local);
+        saved++;
+      }
+    }
+    return saved;
+  }
+
+  private String downloadBinaryToAssetsFile(String urlString, File assetsDir) {
+    HttpURLConnection connection = null;
+    try {
+      URL url = new URL(urlString);
+      connection = (HttpURLConnection) url.openConnection();
+      connection.setRequestMethod("GET");
+      connection.setRequestProperty("User-Agent",
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+              + "Chrome/120.0.0.0 Safari/537.36");
+      connection.setConnectTimeout(20000);
+      connection.setReadTimeout(20000);
+      connection.setInstanceFollowRedirects(true);
+      int code = connection.getResponseCode();
+      if (code != 200) {
+        System.out.println("  ⚠ Asset HTTP " + code + ": " + urlString);
+        return null;
+      }
+      String ext = guessExtension(connection.getContentType(), urlString);
+      String fileName = "a_" + sha256Short(urlString) + ext;
+      File outFile = new File(assetsDir, fileName);
+      try (InputStream in = connection.getInputStream();
+           FileOutputStream fo = new FileOutputStream(outFile)) {
+        in.transferTo(fo);
+      }
+      return "assets/" + fileName;
+    } catch (Exception e) {
+      System.out.println("  ⚠ Không tải được asset: " + urlString);
+      return null;
+    } finally {
+      if (connection != null) {
+        connection.disconnect();
+      }
+    }
+  }
+
+  private static String sha256Short(String input) {
+    try {
+      MessageDigest md = MessageDigest.getInstance("SHA-256");
+      byte[] d = md.digest(input.getBytes(StandardCharsets.UTF_8));
+      StringBuilder sb = new StringBuilder(16);
+      for (int i = 0; i < 8; i++) {
+        sb.append(String.format(Locale.ROOT, "%02x", d[i]));
+      }
+      return sb.toString();
+    } catch (Exception e) {
+      return String.valueOf(Math.abs(input.hashCode()));
+    }
+  }
+
+  private static String guessExtension(String contentType, String urlString) {
+    if (contentType != null) {
+      String ct = contentType.toLowerCase(Locale.ROOT).split(";")[0].trim();
+      switch (ct) {
+        case "image/jpeg":
+          return ".jpg";
+        case "image/png":
+          return ".png";
+        case "image/gif":
+          return ".gif";
+        case "image/webp":
+          return ".webp";
+        case "image/svg+xml":
+          return ".svg";
+        case "font/woff2":
+          return ".woff2";
+        case "font/woff":
+          return ".woff";
+        case "font/ttf":
+        case "application/x-font-ttf":
+          return ".ttf";
+        case "video/mp4":
+          return ".mp4";
+        default:
+          break;
+      }
+    }
+    String path = urlString;
+    try {
+      path = URI.create(urlString).getPath();
+    } catch (Exception ignored) {
+      // keep urlString
+    }
+    int q = path.indexOf('?');
+    if (q >= 0) {
+      path = path.substring(0, q);
+    }
+    int dot = path.lastIndexOf('.');
+    if (dot > 0 && dot < path.length() - 1) {
+      String ext = path.substring(dot).toLowerCase(Locale.ROOT);
+      if (ext.length() <= 6 && ext.matches("\\.[a-z0-9]+")) {
+        return ext;
+      }
+    }
+    return ".bin";
+  }
+
+  private String rewriteUrlsInText(String text, Map<String, String> urlToLocal) {
+    if (text == null || text.isEmpty()) {
+      return text;
+    }
+    List<Map.Entry<String, String>> entries = new ArrayList<>();
+    for (Map.Entry<String, String> e : urlToLocal.entrySet()) {
+      if (e.getValue() != null) {
+        entries.add(e);
+      }
+    }
+    entries.sort(Comparator.comparingInt((Map.Entry<String, String> en) -> en.getKey().length())
+        .reversed());
+    String out = text;
+    for (Map.Entry<String, String> e : entries) {
+      out = out.replace(e.getKey(), e.getValue());
+    }
+    return out;
   }
 }
