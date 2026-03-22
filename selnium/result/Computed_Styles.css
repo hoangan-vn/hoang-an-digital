@@ -1,0 +1,700 @@
+/* Element: html */
+html {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 4873px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: head */
+head {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: meta */
+meta {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: meta */
+meta {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: title */
+title {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: script */
+script {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: link */
+link {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: script */
+script {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: script */
+script {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: style */
+style {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(0, 0, 0);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Element: body */
+body {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 4873px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: rgb(10, 14, 23);
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div#root */
+div#root {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 4873px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.min-h-screen.bg-navy */
+div.min-h-screen.bg-navy {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 4873px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: rgb(10, 14, 23);
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.fixed.top-0.left-0.right-0.z-50.transition-all.duration-300.opacity-100 */
+div.fixed.top-0.left-0.right-0.z-50.transition-all.duration-300.opacity-100 {
+  display: block;
+  position: fixed;
+  width: 1280px;
+  height: 37px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.bg-navy/80.backdrop-blur-sm.border-b.border-white/5 */
+div.bg-navy/80.backdrop-blur-sm.border-b.border-white/5 {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 37px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: rgba(10, 14, 23, 0.8);
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.w-full.px-6.lg:px-12.py-2.flex.justify-between.items-center.text-sm */
+div.w-full.px-6.lg:px-12.py-2.flex.justify-between.items-center.text-sm {
+  display: flex;
+  position: static;
+  width: 1280px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 48px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: a.flex.items-center.gap-2.text-white/70.hover:text-gold.transition-colors */
+a.flex.items-center.gap-2.text-white/70.hover:text-gold.transition-colors {
+  display: flex;
+  position: static;
+  width: 138.667px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: svg.lucide.lucide-phone.w-4.h-4 */
+svg.lucide.lucide-phone.w-4.h-4 {
+  display: block;
+  position: static;
+  width: 16px;
+  height: 16px;
+  margin: 0px;
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: path */
+path {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: span */
+span {
+  display: block;
+  position: static;
+  width: 114.667px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.flex.items-center.gap-4 */
+div.flex.items-center.gap-4 {
+  display: flex;
+  position: static;
+  width: 170.883px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: a.text-white/70.hover:text-gold.transition-colors.hidden.sm:block */
+a.text-white/70.hover:text-gold.transition-colors.hidden.sm:block {
+  display: block;
+  position: static;
+  width: 170.883px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: nav.fixed.left-0.right-0.z-40.transition-all.duration-500.top-10.bg-transparent */
+nav.fixed.left-0.right-0.z-40.transition-all.duration-500.top-10.bg-transparent {
+  display: block;
+  position: fixed;
+  width: 1280px;
+  height: 64px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.w-full.px-6.lg:px-12 */
+div.w-full.px-6.lg:px-12 {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 64px;
+  margin: 0px;
+  padding: 0px 48px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.flex.items-center.justify-between.h-16 */
+div.flex.items-center.justify-between.h-16 {
+  display: flex;
+  position: static;
+  width: 1184px;
+  height: 64px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: a.flex.items-center.gap-2 */
+a.flex.items-center.gap-2 {
+  display: flex;
+  position: static;
+  width: 82.4333px;
+  height: 32px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: span.font-heading.font-bold.text-2xl.text-white */
+span.font-heading.font-bold.text-2xl.text-white {
+  display: block;
+  position: static;
+  width: 82.4333px;
+  height: 32px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 24px;
+  font-family: Plus Jakarta Sans, system-ui, sans-serif;
+}
+
+/* Element: span.text-gold */
+span.text-gold {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(212, 175, 55);
+  background: none;
+  font-size: 24px;
+  font-family: Plus Jakarta Sans, system-ui, sans-serif;
+}
+
+/* Element: div.hidden.lg:flex.items-center.gap-8 */
+div.hidden.lg:flex.items-center.gap-8 {
+  display: flex;
+  position: static;
+  width: 389.7px;
+  height: 36px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 */
+button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 {
+  display: block;
+  position: relative;
+  width: 58.3167px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 */
+button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 {
+  display: block;
+  position: relative;
+  width: 65.2333px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 */
+button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 {
+  display: block;
+  position: relative;
+  width: 55.5333px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 */
+button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 {
+  display: block;
+  position: relative;
+  width: 29.85px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 */
+button.nav-link.text-sm.font-medium.text-white/80.hover:text-white.transition-colors.py-2 {
+  display: block;
+  position: relative;
+  width: 52.7667px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 0px;
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.flex.items-center.gap-4 */
+div.flex.items-center.gap-4 {
+  display: flex;
+  position: static;
+  width: 230.233px;
+  height: 38px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.lang-switcher.hidden.sm:flex */
+button.lang-switcher.hidden.sm:flex {
+  display: flex;
+  position: static;
+  width: 97.7667px;
+  height: 38px;
+  margin: 0px;
+  padding: 8px 16px;
+  color: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: svg.lucide.lucide-globe.w-4.h-4.text-gold */
+svg.lucide.lucide-globe.w-4.h-4.text-gold {
+  display: block;
+  position: static;
+  width: 16px;
+  height: 16px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(212, 175, 55);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: circle */
+circle {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(212, 175, 55);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: path */
+path {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(212, 175, 55);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: path */
+path {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(212, 175, 55);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: span */
+span {
+  display: block;
+  position: static;
+  width: 39.7667px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.items-center.justify-center.gap-2.whitespace-nowrap.text-sm.font-medium.transition-all.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg:not([class*='size-'])]:size-4.shrink-0.[&_svg]:shrink-0.outline-none.focus-visible:border-ring.focus-visible:ring-ring/50.focus-visible:ring-[3px].aria-invalid:ring-destructive/20.dark:aria-invalid:ring-destructive/40.aria-invalid:border-destructive.bg-primary.text-primary-foreground.hover:bg-primary/90.h-9.py-2.has-[>svg]:px-3.hidden.sm:flex.btn-gold.rounded-full.px-6 */
+button.items-center.justify-center.gap-2.whitespace-nowrap.text-sm.font-medium.transition-all.disabled:pointer-events-none.disabled:opacity-50.[&_svg]:pointer-events-none.[&_svg:not([class*='size-'])]:size-4.shrink-0.[&_svg]:shrink-0.outline-none.focus-visible:border-ring.focus-visible:ring-ring/50.focus-visible:ring-[3px].aria-invalid:ring-destructive/20.dark:aria-invalid:ring-destructive/40.aria-invalid:border-destructive.bg-primary.text-primary-foreground.hover:bg-primary/90.h-9.py-2.has-[>svg]:px-3.hidden.sm:flex.btn-gold.rounded-full.px-6 {
+  display: flex;
+  position: static;
+  width: 116.467px;
+  height: 36px;
+  margin: 0px;
+  padding: 8px 24px;
+  color: rgb(10, 14, 23);
+  background: linear-gradient(135deg, rgb(212, 175, 55), rgb(244, 208, 63));
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: button.lg:hidden.p-2.rounded-lg.hover:bg-white/10.transition-colors */
+button.lg:hidden.p-2.rounded-lg.hover:bg-white/10.transition-colors {
+  display: none;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 8px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: svg.lucide.lucide-menu.text-white */
+svg.lucide.lucide-menu.text-white {
+  display: block;
+  position: static;
+  width: 24px;
+  height: 24px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: path */
+path {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: path */
+path {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: path */
+path {
+  display: inline;
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: main */
+main {
+  display: block;
+  position: static;
+  width: 1280px;
+  height: 4459px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: section.relative.w-full.min-h-screen.flex.items-center.pt-24 */
+section.relative.w-full.min-h-screen.flex.items-center.pt-24 {
+  display: flex;
+  position: relative;
+  width: 1280px;
+  height: 955px;
+  margin: 0px;
+  padding: 96px 0px 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+
+/* Element: div.absolute.inset-0 */
+div.absolute.inset-0 {
+  display: block;
+  position: absolute;
+  width: 1280px;
+  height: 955px;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(255, 255, 255);
+  background: none;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+}
+

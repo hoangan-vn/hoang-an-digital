@@ -1,0 +1,64 @@
+/* ========== Style Tag #1 ========== */
+
+      .kimi-brand-container {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 99999999;
+        transition: opacity 0.3s ease;
+      }
+
+      .kimi-brand-close-icon {
+        cursor: pointer;
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        background: rgba(69, 69, 69, 0.70);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border: 0.5px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .kimi-brand-container:hover .kimi-brand-close-icon {
+        display: flex;
+      }
+
+      .kimi-brand-link {
+        background: #000;
+        color: white;
+        padding: 4px 6px 4px 4px;
+        border-radius: 16px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border: 0.5px solid rgba(255, 255, 255, 0.15);
+        text-decoration: none;
+      }
+
+      .kimi-brand-container:hover .kimi-brand-icon {
+        width: 16px;
+      }
+
+      .kimi-brand-icon {
+        width: 0;
+        overflow: hidden;
+        transition: width 0.3s ease;
+        pointer-events: none;
+      }
+
+      .kimi-brand-avatar {
+        width: 18px;
+        height: 18px;
+        border: 0.5px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+      }
+    
+
