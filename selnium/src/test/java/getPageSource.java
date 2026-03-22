@@ -18,12 +18,14 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -45,11 +47,11 @@ public class getPageSource {
       wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
       waitForDocumentReady(driver);
       scrollPageToLoadLazyContent(js);
-      Thread.sleep(1500);
+      waitForImagesToSettle(js, 18_000);
+      Thread.sleep(2_500);
       waitForDocumentReady(driver);
       String htmlSource = driver.getPageSource();
 
-      // Tạo thư mục result nếu chưa tồn tại
       new File("./result").mkdirs();
 
       saveToFile("NextJS_SourceCode.html", htmlSource);
@@ -104,10 +106,16 @@ public class getPageSource {
       assetsDir.mkdirs();
       Map<String, String> urlToLocal = new LinkedHashMap<>();
       String pageBase = driver.getCurrentUrl();
+      mergeCssUrlsIntoDownloadQueue(inlineCSS.toString(), pageBase, urlToLocal);
       mergeCssUrlsIntoDownloadQueue(externalCssMerged, pageBase, urlToLocal);
+      mergeCssUrlsIntoDownloadQueue(htmlSource, pageBase, urlToLocal);
       collectAssetUrlsFromDom(js, urlToLocal);
-      int savedAssets = downloadAssets(urlToLocal, assetsDir);
+      collectInlineStyleAssetUrls(driver, pageBase, urlToLocal);
+      int savedAssets = downloadAssets(urlToLocal, assetsDir, pageBase);
       System.out.println("✓ Đã tải " + savedAssets + " file ảnh/font/media (vào result/assets/)");
+
+      patchDomAssetReferences(js, urlToLocal, pageBase);
+      htmlSource = driver.getPageSource();
 
       externalCssMerged = rewriteUrlsInText(externalCssMerged, urlToLocal);
       saveToFile("External_Styles_local.css", externalCssMerged);
@@ -137,18 +145,11 @@ public class getPageSource {
     }
   }
 
-  /**
-   * Khởi tạo Firefox WebDriver
-   */
   private WebDriver createFirefoxDriver() {
     WebDriverManager.firefoxdriver().setup();
 
     FirefoxOptions options = new FirefoxOptions();
 
-    // Headless mode - bỏ comment nếu chạy trên server/CI không có GUI
-    // options.addArguments("--headless");
-
-    // Tìm binary Firefox theo thứ tự ưu tiên
     String firefoxBinary = findFirstExecutable(
         System.getenv("FIREFOX_BIN"),
         "/snap/firefox/current/usr/lib/firefox/firefox",
@@ -156,8 +157,8 @@ public class getPageSource {
         "/usr/lib64/firefox/firefox",
         "/opt/firefox/firefox",
         "/usr/bin/firefox",
-        "C:\\Program Files\\Mozilla Firefox\\firefox.exe",       // Windows
-        "/Applications/Firefox.app/Contents/MacOS/firefox"       // macOS
+        "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+        "/Applications/Firefox.app/Contents/MacOS/firefox"
     );
 
     if (firefoxBinary != null) {
@@ -167,17 +168,13 @@ public class getPageSource {
       System.out.println("Không tìm thấy binary Firefox, thử dùng PATH mặc định...");
     }
 
-    // Bật tải ảnh để DOM và clone offline có đủ media (trước đây =2 là chặn ảnh → thiếu nội dung).
     options.addPreference("permissions.default.image", 1);
-    options.addPreference("dom.webnotifications.enabled", false); // Tắt thông báo
-    options.addPreference("media.volume_scale", "0.0");           // Tắt âm thanh
+    options.addPreference("dom.webnotifications.enabled", false);
+    options.addPreference("media.volume_scale", "0.0");
 
     return new FirefoxDriver(options);
   }
 
-  /**
-   * Tìm đường dẫn executable đầu tiên hợp lệ
-   */
   private String findFirstExecutable(String... candidates) {
     for (String candidate : candidates) {
       if (candidate == null || candidate.isBlank()) {
@@ -192,9 +189,6 @@ public class getPageSource {
     return null;
   }
 
-  /**
-   * Tải nội dung CSS từ URL
-   */
   private String downloadCSS(String cssUrl) {
     try {
       URL url = new URL(cssUrl);
@@ -220,19 +214,15 @@ public class getPageSource {
     return null;
   }
 
-  /**
-   * Trích xuất computed styles từ các elements quan trọng
-   */
   private String extractComputedStyles(WebDriver driver, JavascriptExecutor js) {
     String script =
         "let styles = '';" +
             "document.querySelectorAll('*').forEach((el, index) => {" +
-            "  if (index < 300) {" + // Giới hạn để file không quá lớn; tăng nếu cần
+            "  if (index < 300) {" +
             "    try {" +
             "      let computed = window.getComputedStyle(el);" +
             "      let selector = el.tagName.toLowerCase();" +
             "      if (el.id) selector += '#' + el.id;" +
-            // Ép className về String để tránh lỗi SVGAnimatedString
             "      let className = (typeof el.className === 'string') " +
             "        ? el.className " +
             "        : (el.className.baseVal || '');" +
@@ -255,9 +245,6 @@ public class getPageSource {
     return (String) js.executeScript(script);
   }
 
-  /**
-   * Tạo HTML hoàn chỉnh với tất cả CSS được embed
-   */
   private String createCompleteHTML(String html, String inlineCSS, String externalCSS) {
     StringBuilder complete = new StringBuilder();
     int headEndIndex = html.indexOf("</head>");
@@ -279,9 +266,6 @@ public class getPageSource {
     return complete.toString();
   }
 
-  /**
-   * Lưu nội dung vào file
-   */
   private void saveToFile(String filename, String content) throws IOException {
     FileWriter fileWriter = new FileWriter("./result/" + filename);
     PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -297,30 +281,64 @@ public class getPageSource {
   }
 
   /**
-   * Cuộn từng đoạn để lazy-load ảnh / nội dung (Next.js, v.v.).
+   * Cuộn chậm (bước nhỏ + nghỉ lâu) để lazy-load ảnh kịp; lặp 2 lượt.
    */
-  private void scrollPageToLoadLazyContent(JavascriptExecutor js) {
-    Object h = js.executeScript(
-        "return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);"
-    );
-    long height = h instanceof Number ? ((Number) h).longValue() : 0L;
-    int step = Math.max(400, (int) Math.min(height / 10, 900));
-    for (long y = 0; y <= height; y += step) {
-      js.executeScript("window.scrollTo(0, arguments[0]);", y);
-      try {
-        Thread.sleep(120);
-      } catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-        break;
+  private void scrollPageToLoadLazyContent(JavascriptExecutor js) throws InterruptedException {
+    for (int pass = 0; pass < 2; pass++) {
+      Object h = js.executeScript(
+          "return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);"
+      );
+      long height = h instanceof Number ? ((Number) h).longValue() : 0L;
+      int step = 320;
+      for (long y = 0; y <= height; y += step) {
+        js.executeScript("window.scrollTo(0, arguments[0]);", y);
+        Thread.sleep(320);
       }
+      js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+      Thread.sleep(600);
+      js.executeScript("window.scrollTo(0, 0);");
+      Thread.sleep(400);
     }
-    js.executeScript("window.scrollTo(0, 0);");
+  }
+
+  /**
+   * Chờ ảnh http(s) có complete + naturalWidth &gt; 0 (hoặc hết timeout).
+   */
+  private void waitForImagesToSettle(JavascriptExecutor js, int maxWaitMs)
+      throws InterruptedException {
+    long deadline = System.currentTimeMillis() + maxWaitMs;
+    while (System.currentTimeMillis() < deadline) {
+      Object n = js.executeScript(
+          "var n=0;"
+              + "document.querySelectorAll('img').forEach(function(i){"
+              + "  var s = i.getAttribute('src')||'';"
+              + "  if (!s || s.indexOf('data:')===0 || s.indexOf('blob:')===0) return;"
+              + "  if (!i.complete || i.naturalWidth===0) n++;"
+              + "});"
+              + "return n;"
+      );
+      long pending = n instanceof Number ? ((Number) n).longValue() : 0L;
+      if (pending == 0) {
+        return;
+      }
+      Thread.sleep(450);
+    }
   }
 
   private static final Pattern CSS_URL_PATTERN = Pattern.compile(
-      "url\\(\\s*([\"']?)([^\"')\\s]+)\\1\\s*\\)",
+      "url\\(\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\)]+))\\s*\\)",
       Pattern.CASE_INSENSITIVE | Pattern.DOTALL
   );
+
+  private static String cssUrlMatchGroup(Matcher m) {
+    if (m.group(1) != null) {
+      return m.group(1);
+    }
+    if (m.group(2) != null) {
+      return m.group(2);
+    }
+    return m.group(3);
+  }
 
   private void mergeCssUrlsIntoDownloadQueue(
       String css, String pageBase, Map<String, String> urlToLocal) {
@@ -329,13 +347,46 @@ public class getPageSource {
     }
     Matcher m = CSS_URL_PATTERN.matcher(css);
     while (m.find()) {
-      String raw = m.group(2).trim();
+      String raw = cssUrlMatchGroup(m);
+      if (raw == null) {
+        continue;
+      }
+      raw = raw.trim();
       if (raw.isEmpty() || raw.startsWith("data:") || raw.startsWith("#")) {
         continue;
       }
       String abs = toAbsoluteAssetUrl(raw, pageBase);
       if (abs != null) {
         urlToLocal.putIfAbsent(abs, null);
+      }
+    }
+  }
+
+  /**
+   * url(...) trong thuộc tính style="" — xử lý bằng Java để tránh lỗi regex trong executeScript.
+   */
+  private void collectInlineStyleAssetUrls(
+      WebDriver driver, String pageBase, Map<String, String> urlToLocal) {
+    List<WebElement> styled = driver.findElements(By.cssSelector("[style]"));
+    for (WebElement el : styled) {
+      String st = el.getAttribute("style");
+      if (st == null || st.isEmpty()) {
+        continue;
+      }
+      Matcher m = CSS_URL_PATTERN.matcher(st);
+      while (m.find()) {
+        String raw = cssUrlMatchGroup(m);
+        if (raw == null) {
+          continue;
+        }
+        raw = raw.trim();
+        if (raw.isEmpty() || raw.startsWith("data:") || raw.startsWith("#")) {
+          continue;
+        }
+        String abs = toAbsoluteAssetUrl(raw, pageBase);
+        if (abs != null) {
+          urlToLocal.putIfAbsent(abs, null);
+        }
       }
     }
   }
@@ -364,19 +415,28 @@ public class getPageSource {
             + "  if (!u || u.indexOf('data:') === 0 || u.indexOf('blob:') === 0) return;"
             + "  try { out.push(new URL(u, document.baseURI).href); } catch (e) {}"
             + "}"
-            + "document.querySelectorAll('img[src]').forEach(function(el) { add(el.getAttribute('src')); });"
-            + "document.querySelectorAll('img[srcset]').forEach(function(el) {"
-            + "  (el.getAttribute('srcset') || '').split(',').forEach(function(part) {"
+            + "function splitSrcset(ss) {"
+            + "  (ss || '').split(',').forEach(function(part) {"
             + "    var u = part.trim().split(/\\s+/)[0];"
             + "    add(u);"
             + "  });"
+            + "}"
+            + "document.querySelectorAll('img').forEach(function(el) {"
+            + "  add(el.getAttribute('src'));"
+            + "  add(el.getAttribute('data-src'));"
+            + "  add(el.getAttribute('data-original'));"
+            + "  add(el.getAttribute('data-lazy-src'));"
+            + "  add(el.getAttribute('data-url'));"
+            + "  splitSrcset(el.getAttribute('srcset'));"
+            + "  splitSrcset(el.getAttribute('data-srcset'));"
+            + "  try { if (el.currentSrc) add(el.currentSrc); } catch (e) {}"
+            + "});"
+            + "document.querySelectorAll('input[type=\"image\"][src]').forEach(function(el) {"
+            + "  add(el.getAttribute('src'));"
             + "});"
             + "document.querySelectorAll('source[srcset], source[src]').forEach(function(el) {"
             + "  if (el.getAttribute('src')) add(el.getAttribute('src'));"
-            + "  (el.getAttribute('srcset') || '').split(',').forEach(function(part) {"
-            + "    var u = part.trim().split(/\\s+/)[0];"
-            + "    add(u);"
-            + "  });"
+            + "  splitSrcset(el.getAttribute('srcset'));"
             + "});"
             + "document.querySelectorAll('video[poster]').forEach(function(el) {"
             + "  add(el.getAttribute('poster'));"
@@ -385,6 +445,16 @@ public class getPageSource {
             + "  'link[rel~=\"icon\"][href], link[rel=\"preload\"][href], "
             + "link[rel=\"apple-touch-icon\"][href]'"
             + ").forEach(function(el) { add(el.getAttribute('href')); });"
+            + "document.querySelectorAll("
+            + "  'meta[property=\"og:image\"][content], meta[name=\"twitter:image\"][content]'"
+            + ").forEach(function(el) { add(el.getAttribute('content')); });"
+            + "document.querySelectorAll('svg image').forEach(function(el) {"
+            + "  var h = el.getAttribute('href');"
+            + "  if (!h && el.getAttributeNS) {"
+            + "    h = el.getAttributeNS('http://www.w3.org/1999/xlink', 'href');"
+            + "  }"
+            + "  add(h);"
+            + "});"
             + "return out;";
     Object raw = js.executeScript(script);
     if (!(raw instanceof List)) {
@@ -401,23 +471,127 @@ public class getPageSource {
     }
   }
 
-  private int downloadAssets(Map<String, String> urlToLocal, File assetsDir) {
+  private void patchDomAssetReferences(
+      JavascriptExecutor js, Map<String, String> urlToLocal, String pageBase) {
+    Map<String, String> localToRepresentativeAbs = new LinkedHashMap<>();
+    for (Map.Entry<String, String> e : urlToLocal.entrySet()) {
+      if (e.getValue() == null) {
+        continue;
+      }
+      String local = e.getValue();
+      String abs = e.getKey();
+      localToRepresentativeAbs.merge(
+          local, abs, (a, b) -> a.length() >= b.length() ? a : b);
+    }
+    List<Object> pairs = new ArrayList<>();
+    for (Map.Entry<String, String> e : localToRepresentativeAbs.entrySet()) {
+      pairs.add(new String[]{e.getValue(), e.getKey()});
+    }
+    if (pairs.isEmpty()) {
+      return;
+    }
+    js.executeScript(
+        "var pairs = arguments[0];"
+            + "var base = arguments[1] || document.baseURI;"
+            + "function norm(h) {"
+            + "  try { return new URL(h, base).href; } catch (err) { return h; }"
+            + "}"
+            + "function matches(u, abs) {"
+            + "  if (!u || !abs) return false;"
+            + "  try { return norm(u) === norm(abs); } catch (e) { return u === abs; }"
+            + "}"
+            + "pairs.forEach(function(pair) {"
+            + "  var abs = pair[0]; var local = pair[1];"
+            + "  document.querySelectorAll('img').forEach(function(el) {"
+            + "    var cs = '';"
+            + "    try { cs = el.currentSrc || ''; } catch (e) {}"
+            + "    if (matches(cs, abs) || matches(el.getAttribute('src'), abs)"
+            + "        || matches(el.getAttribute('data-src'), abs)"
+            + "        || matches(el.getAttribute('data-lazy-src'), abs)"
+            + "        || matches(el.getAttribute('data-original'), abs)) {"
+            + "      el.setAttribute('src', local);"
+            + "      el.removeAttribute('srcset');"
+            + "      el.removeAttribute('data-srcset');"
+            + "      el.removeAttribute('data-src');"
+            + "      el.removeAttribute('data-lazy-src');"
+            + "    }"
+            + "  });"
+            + "  document.querySelectorAll('source[src]').forEach(function(el) {"
+            + "    if (matches(el.getAttribute('src'), abs)) el.setAttribute('src', local);"
+            + "  });"
+            + "  document.querySelectorAll('video[poster]').forEach(function(el) {"
+            + "    if (matches(el.getAttribute('poster'), abs)) el.setAttribute('poster', local);"
+            + "  });"
+            + "  document.querySelectorAll('input[type=\"image\"][src]').forEach(function(el) {"
+            + "    if (matches(el.getAttribute('src'), abs)) el.setAttribute('src', local);"
+            + "  });"
+            + "  document.querySelectorAll('svg image').forEach(function(el) {"
+            + "    var h = el.getAttribute('href');"
+            + "    if (!h && el.getAttributeNS) {"
+            + "      h = el.getAttributeNS('http://www.w3.org/1999/xlink', 'href');"
+            + "    }"
+            + "    if (matches(h, abs)) {"
+            + "      el.setAttribute('href', local);"
+            + "      if (el.setAttributeNS) {"
+            + "        el.setAttributeNS('http://www.w3.org/1999/xlink', 'href', local);"
+            + "      }"
+            + "    }"
+            + "  });"
+            + "});",
+        pairs,
+        pageBase
+    );
+  }
+
+  private int downloadAssets(
+      Map<String, String> urlToLocal, File assetsDir, String refererPage) {
     int saved = 0;
     List<String> keys = new ArrayList<>(urlToLocal.keySet());
     for (String url : keys) {
       if (urlToLocal.get(url) != null) {
         continue;
       }
-      String local = downloadBinaryToAssetsFile(url, assetsDir);
+      String local = downloadBinaryToAssetsFile(url, assetsDir, refererPage);
       if (local != null) {
-        urlToLocal.put(url, local);
+        registerUrlAliases(url, local, urlToLocal);
         saved++;
       }
     }
     return saved;
   }
 
-  private String downloadBinaryToAssetsFile(String urlString, File assetsDir) {
+  private void registerUrlAliases(String originalUrl, String localPath, Map<String, String> urlToLocal) {
+    for (String variant : computeUrlVariants(originalUrl)) {
+      urlToLocal.put(variant, localPath);
+    }
+  }
+
+  private static List<String> computeUrlVariants(String u) {
+    LinkedHashSet<String> set = new LinkedHashSet<>();
+    if (u != null && !u.isBlank()) {
+      set.add(u);
+      try {
+        String ascii = URI.create(u).toASCIIString();
+        set.add(ascii);
+      } catch (Exception ignored) {
+        // skip
+      }
+      if (u.contains("&")) {
+        set.add(u.replace("&", "&amp;"));
+      }
+      try {
+        String dec = URLDecoder.decode(u, StandardCharsets.UTF_8);
+        if (!dec.equals(u)) {
+          set.add(dec);
+        }
+      } catch (Exception ignored) {
+        // skip
+      }
+    }
+    return new ArrayList<>(set);
+  }
+
+  private String downloadBinaryToAssetsFile(String urlString, File assetsDir, String refererPage) {
     HttpURLConnection connection = null;
     try {
       URL url = new URL(urlString);
@@ -426,6 +600,11 @@ public class getPageSource {
       connection.setRequestProperty("User-Agent",
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
               + "Chrome/120.0.0.0 Safari/537.36");
+      connection.setRequestProperty("Accept",
+          "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8");
+      if (refererPage != null && !refererPage.isBlank()) {
+        connection.setRequestProperty("Referer", refererPage);
+      }
       connection.setConnectTimeout(20000);
       connection.setReadTimeout(20000);
       connection.setInstanceFollowRedirects(true);
@@ -443,7 +622,7 @@ public class getPageSource {
       }
       return "assets/" + fileName;
     } catch (Exception e) {
-      System.out.println("  ⚠ Không tải được asset: " + urlString);
+      System.out.println("  ⚠ Không tải được asset: " + urlString + " — " + e.getMessage());
       return null;
     } finally {
       if (connection != null) {
@@ -478,6 +657,8 @@ public class getPageSource {
           return ".gif";
         case "image/webp":
           return ".webp";
+        case "image/avif":
+          return ".avif";
         case "image/svg+xml":
           return ".svg";
         case "font/woff2":
